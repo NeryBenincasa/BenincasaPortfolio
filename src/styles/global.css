@@ -1,0 +1,336 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta Benincasa */
+  --color-base: #0A0808;
+  --color-base-soft: #120E0E;
+  --color-base-elevated: #1C1515;
+  --color-bordeaux: #7D1D3F;
+  --color-bordeaux-dark: #4A0E24;
+  --color-bordeaux-light: #A3264F;
+  --color-copper: #C4956A;
+  --color-copper-light: #D4A87A;
+  --color-ivory: #F2EDE6;
+  --color-ivory-muted: #C8C0B5;
+  --color-ivory-dim: #7A7068;
+
+  /* Tipografía */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0A0808;
+    color: #F2EDE6;
+    font-family: "Outfit", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Playfair Display", Georgia, serif;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: #7D1D3F;
+    color: #F2EDE6;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #0A0808; }
+  ::-webkit-scrollbar-thumb { background: #4A0E24; }
+}
+
+/* Reveal on scroll — default (fade up) */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reveal variant: slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-48px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reveal variant: slide from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(48px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reveal variant: scale up */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.38s; }
+.reveal-delay-4 { transition-delay: 0.52s; }
+.reveal-delay-5 { transition-delay: 0.66s; }
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #F2EDE6 0%, #D4A87A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.028;
+  mix-blend-mode: overlay;
+}
+
+/* MVP tooltip */
+.mvp-tip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  border-bottom: 1px dashed rgba(196,149,106,0.5);
+  white-space: nowrap;
+}
+
+.mvp-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #1C1515;
+  border: 1px solid rgba(196,149,106,0.3);
+  color: #C8C0B5;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  padding: 0.55rem 0.9rem;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 100;
+}
+
+.mvp-tip:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Horizontal rule with bordeaux */
+.hr-bordeaux {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #7D1D3F, transparent);
+}
+
+/* ==========================================
+   LIGHT THEME
+   ========================================== */
+
+/* Smooth transition between themes */
+html {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme="light"] body {
+  background-color: #F5F0E8 !important;
+  color: #1A1412 !important;
+}
+
+/* Override section backgrounds */
+[data-theme="light"] section,
+[data-theme="light"] footer {
+  background-color: transparent !important;
+}
+
+[data-theme="light"] section[style*="background:#0D0A0A"] {
+  background-color: #EDE7DD !important;
+}
+
+/* Nav */
+[data-theme="light"] #nav,
+[data-theme="light"] header[style*="background:rgba(10,8,8"] {
+  background: rgba(245,240,232,0.9) !important;
+  border-bottom-color: rgba(125,29,63,0.15) !important;
+}
+
+/* Primary text — headings and bold text */
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4 {
+  color: #1A1412 !important;
+}
+
+/* Override inline color on headings */
+[data-theme="light"] [style*="color:#F2EDE6"] {
+  color: #1A1412 !important;
+}
+
+/* Secondary text */
+[data-theme="light"] [style*="color:#C8C0B5"] {
+  color: #5A4F45 !important;
+}
+
+/* Muted text */
+[data-theme="light"] [style*="color:#7A7068"] {
+  color: #8A7E74 !important;
+}
+
+/* Copper accents stay */
+[data-theme="light"] [style*="color:#C4956A"] {
+  color: #9A6F3A !important;
+}
+
+/* Card backgrounds */
+[data-theme="light"] [style*="background:#0E0B0B"],
+[data-theme="light"] [style*="background:#0D0A0A"] {
+  background: #FFFFFF !important;
+}
+
+[data-theme="light"] [style*="background:#160D10"] {
+  background: #FDF8F4 !important;
+}
+
+[data-theme="light"] [style*="background:#1C1515"] {
+  background: #FFFFFF !important;
+}
+
+[data-theme="light"] [style*="background:#120E0E"] {
+  background: #FFFFFF !important;
+}
+
+/* Input fields */
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background: #FFFFFF !important;
+  color: #1A1412 !important;
+  border-color: rgba(125,29,63,0.2) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #8A7E74 !important;
+}
+
+/* Footer */
+[data-theme="light"] footer {
+  background-color: #EDE7DD !important;
+  border-top-color: rgba(125,29,63,0.15) !important;
+}
+
+/* Trabajos grid */
+[data-theme="light"] .trabajos-grid {
+  background: rgba(125,29,63,0.08) !important;
+}
+
+[data-theme="light"] .trabajos-grid a {
+  background: #FFFFFF !important;
+}
+
+/* Bordeaux stays in both themes — it's the brand */
+
+/* Gradient text fix for light */
+[data-theme="light"] .text-gradient {
+  background: linear-gradient(135deg, #1A1412 0%, #9A6F3A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise overlay — reduce in light */
+[data-theme="light"] .noise::after {
+  opacity: 0.015;
+}
+
+/* Scrollbar light */
+[data-theme="light"] ::-webkit-scrollbar-track { background: #F5F0E8; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #C4956A; }
+
+/* Selection */
+[data-theme="light"] ::selection {
+  background-color: #7D1D3F;
+  color: #F2EDE6;
+}
+
+/* Nav links in light */
+[data-theme="light"] nav a[style*="color:#C8C0B5"] {
+  color: #5A4F45 !important;
+}
+
+/* Logo */
+[data-theme="light"] a[style*="color:#F2EDE6"][style*="Playfair"] {
+  color: #1A1412 !important;
+}
+
+/* Marquee strip */
+[data-theme="light"] [style*="background:rgba(125,29,63,0.04)"] {
+  background: rgba(125,29,63,0.04) !important;
+}
+
+/* FAQ items */
+[data-theme="light"] .faq-item summary span:first-child {
+  color: #1A1412 !important;
+}
+
+/* MVP tooltip */
+[data-theme="light"] .mvp-tip::after {
+  background: #FFFFFF;
+  border-color: rgba(196,149,106,0.3);
+  color: #5A4F45;
+}

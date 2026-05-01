@@ -1,0 +1,110 @@
+---
+const habilidades = [
+  { nombre: "Diseño UI/UX", descripcion: "Interfaces con criterio visual, no plantillas. Cada sitio tiene su propia identidad." },
+  { nombre: "Desarrollo Frontend", descripcion: "Sitios rápidos, accesibles y optimizados. Código limpio, carga instantánea." },
+  { nombre: "Estrategia de Conversión", descripcion: "No alcanza con verse bien — tu sitio tiene que generar clientes." },
+];
+
+const valores = [
+  { icono: "↗", titulo: "Velocidad real", texto: "MVP en 48 horas. No promesas, entregas." },
+  { icono: "◆", titulo: "Diseño con carácter", texto: "Nada genérico. Tu sitio se ve como tu negocio, no como todos los demás." },
+  { icono: "→", titulo: "Sin intermediarios", texto: "Hablás directo conmigo. Sin equipos enormes, sin idas y vueltas innecesarias." },
+];
+---
+
+<section id="sobre-mi" style="padding:clamp(6rem,11vw,9rem) 2rem;position:relative;overflow:hidden;">
+
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right, transparent, rgba(125,29,63,0.35), transparent);"></div>
+
+  <!-- Subtle background accent -->
+  <div style="position:absolute;top:20%;right:-8rem;width:28rem;height:28rem;background:radial-gradient(circle, rgba(125,29,63,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:72rem;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="margin-bottom:5rem;">
+      <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.25rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Quién está detrás</span>
+      </div>
+      <h2 class="reveal reveal-delay-1" style="font-size:clamp(2rem,3.8vw,3rem);font-weight:500;color:#F2EDE6;letter-spacing:-0.025em;line-height:1.1;">
+        Una persona, no una agencia.
+      </h2>
+    </div>
+
+    <!-- Main grid: photo + bio -->
+    <div style="display:grid;grid-template-columns:5fr 7fr;gap:4rem;align-items:start;margin-bottom:5rem;" class="sobre-mi-grid">
+
+      <!-- Photo column -->
+      <div class="reveal reveal-delay-1">
+        <div style="aspect-ratio:3/4;background:#120E0E;border:1px solid rgba(125,29,63,0.25);position:relative;overflow:hidden;">
+          <!-- Placeholder — reemplazar con foto real -->
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;">
+            <div style="width:4rem;height:4rem;border-radius:50%;border:1px solid rgba(196,149,106,0.3);display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#C4956A;font-weight:500;">N</span>
+            </div>
+            <span style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;">Foto próximamente</span>
+          </div>
+          <!-- Accent corner -->
+          <div style="position:absolute;top:0;left:0;width:3rem;height:3rem;border-top:2px solid #7D1D3F;border-left:2px solid #7D1D3F;"></div>
+          <div style="position:absolute;bottom:0;right:0;width:3rem;height:3rem;border-bottom:2px solid rgba(196,149,106,0.3);border-right:2px solid rgba(196,149,106,0.3);"></div>
+        </div>
+
+        <!-- Name card below photo -->
+        <div style="margin-top:1.5rem;">
+          <p style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:500;color:#F2EDE6;letter-spacing:-0.01em;">Nery Benincasa</p>
+          <p style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;margin-top:0.35rem;">Diseño & Desarrollo Web</p>
+          <p style="font-size:0.8rem;color:#7A7068;font-family:'Outfit',sans-serif;margin-top:0.25rem;">Rosario, Argentina</p>
+        </div>
+      </div>
+
+      <!-- Bio column -->
+      <div>
+        <div class="reveal reveal-delay-2" style="margin-bottom:3rem;">
+          <p style="font-size:clamp(1.05rem,1.3vw,1.2rem);color:#C8C0B5;line-height:1.85;font-weight:300;font-family:'Outfit',sans-serif;margin-bottom:1.5rem;">
+            Soy Nery. Diseño y desarrollo sitios web para negocios que necesitan dejar de ser invisibles en internet. No trabajo con plantillas, no entrego cosas genéricas y no doy vueltas.
+          </p>
+          <p style="font-size:clamp(1.05rem,1.3vw,1.2rem);color:#C8C0B5;line-height:1.85;font-weight:300;font-family:'Outfit',sans-serif;margin-bottom:1.5rem;">
+            <em style="color:#F2EDE6;font-style:normal;font-weight:400;">Benincasa</em> viene del italiano — significa <em style="color:#C4956A;font-style:italic;">"bien en casa"</em>. Y eso es lo que quiero que sientas con tu sitio: que tu negocio esté bien en internet, en un lugar que lo represente, que genere confianza y que convierta visitas en clientes reales.
+          </p>
+          <p style="font-size:clamp(1.05rem,1.3vw,1.2rem);color:#C8C0B5;line-height:1.85;font-weight:300;font-family:'Outfit',sans-serif;">
+            Trabajo con herramientas modernas que priorizan velocidad y rendimiento. Cada proyecto lo encaro con el mismo estándar: que cargue rápido, que se vea impecable y que cumpla su función desde el primer día.
+          </p>
+        </div>
+
+        <!-- Habilidades -->
+        <div class="reveal reveal-delay-3">
+          {habilidades.map((h, i) => (
+            <div style={`padding:1.25rem 0;${i < habilidades.length - 1 ? 'border-bottom:1px solid rgba(125,29,63,0.15);' : ''}`}>
+              <p style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;color:#F2EDE6;margin-bottom:0.35rem;">{h.nombre}</p>
+              <p style="font-size:0.85rem;color:#7A7068;font-family:'Outfit',sans-serif;line-height:1.6;font-weight:300;">{h.descripcion}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Valores — 3 columns -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(125,29,63,0.15);" class="valores-grid">
+      {valores.map((v, i) => (
+        <div class={`reveal reveal-delay-${i + 1}`} style="background:#0D0A0A;padding:2.5rem;">
+          <span style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border:1px solid rgba(125,29,63,0.3);border-radius:50%;color:#C4956A;font-size:0.9rem;margin-bottom:1.5rem;">{v.icono}</span>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500;color:#F2EDE6;margin-bottom:0.65rem;letter-spacing:-0.01em;">{v.titulo}</h3>
+          <p style="font-size:0.875rem;color:#C8C0B5;line-height:1.7;font-weight:300;font-family:'Outfit',sans-serif;">{v.texto}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .sobre-mi-grid {
+      grid-template-columns: 1fr !important;
+      gap: 3rem !important;
+    }
+    .valores-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

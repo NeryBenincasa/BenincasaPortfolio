@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Mensaje recibido — Benincasa"
+  description="Gracias por escribirte. Te respondo en menos de 24 horas."
+>
+  <!-- Nav minimal -->
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,8,8,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(125,29,63,0.2);padding:0 2rem;height:4rem;display:flex;align-items:center;justify-content:space-between;">
+    <a
+      href="/"
+      style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#F2EDE6;text-decoration:none;transition:color 0.2s;"
+      onmouseover="this.style.color='#C4956A'"
+      onmouseout="this.style.color='#F2EDE6'"
+    >
+      Benincasa
+    </a>
+    <a
+      href="/"
+      style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C8C0B5;text-decoration:none;transition:color 0.25s;"
+      onmouseover="this.style.color='#F2EDE6'"
+      onmouseout="this.style.color='#C8C0B5'"
+    >
+      ← Volver al inicio
+    </a>
+  </header>
+
+  <main style="min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;">
+
+    <!-- Background radial -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(125,29,63,0.18) 0%, transparent 70%);pointer-events:none;"></div>
+
+    <!-- Top line decoration -->
+    <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right, transparent, rgba(125,29,63,0.4), transparent);"></div>
+
+    <!-- Floating accent circles -->
+    <div style="position:absolute;top:15%;left:8%;width:20rem;height:20rem;background:radial-gradient(circle, rgba(196,149,106,0.05) 0%, transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:15%;right:8%;width:24rem;height:24rem;background:radial-gradient(circle, rgba(125,29,63,0.08) 0%, transparent 70%);pointer-events:none;"></div>
+
+    <div style="max-width:36rem;text-align:center;position:relative;">
+
+      <!-- Check icon -->
+      <div class="reveal" style="display:flex;align-items:center;justify-content:center;margin-bottom:2.5rem;">
+        <div style="position:relative;width:5rem;height:5rem;">
+          <!-- Outer ring -->
+          <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(196,149,106,0.3);animation:ring-pulse 3s ease-in-out infinite;"></div>
+          <!-- Middle ring -->
+          <div style="position:absolute;inset:0.5rem;border-radius:50%;border:1px solid rgba(196,149,106,0.15);"></div>
+          <!-- Inner circle -->
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C4956A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge -->
+      <div class="reveal reveal-delay-1" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.5rem;">
+        <span style="width:5px;height:5px;border-radius:50%;background:#C4956A;display:inline-block;flex-shrink:0;"></span>
+        <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Mensaje recibido</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="reveal reveal-delay-2" style="font-size:clamp(2.2rem,5vw,3.5rem);font-weight:500;color:#F2EDE6;line-height:1.15;letter-spacing:-0.03em;margin-bottom:1.25rem;">
+        Perfecto, ya<br/>
+        <em style="color:#7D1D3F;font-style:italic;">tengo tu mensaje.</em>
+      </h1>
+
+      <!-- Body -->
+      <p class="reveal reveal-delay-3" style="color:#C8C0B5;font-size:1rem;line-height:1.8;font-weight:300;font-family:'Outfit',sans-serif;margin-bottom:3rem;">
+        Te respondo en menos de <strong style="color:#F2EDE6;font-weight:400;">24 horas</strong> con lo que necesitás saber para arrancar.
+        Si querés acelerar el proceso, mandame un mensaje directo por WhatsApp.
+      </p>
+
+      <!-- Actions -->
+      <div class="reveal reveal-delay-3" style="display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:4rem;">
+        <a
+          href="https://wa.me/543413345345"
+          target="_blank"
+          rel="noopener"
+          style="display:inline-flex;align-items:center;gap:0.6rem;background:#7D1D3F;color:#F2EDE6;text-decoration:none;padding:0.9rem 1.75rem;border-radius:9999px;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;font-family:'Outfit',sans-serif;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);"
+          onmouseover="this.style.background='#A3264F';this.style.transform='scale(0.97)'"
+          onmouseout="this.style.background='#7D1D3F';this.style.transform='scale(1)'"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F2EDE6"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.826L.057 23.885a.5.5 0 0 0 .606.61l6.218-1.635A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.882a9.875 9.875 0 0 1-5.021-1.368l-.36-.214-3.733.981.999-3.645-.235-.374A9.855 9.855 0 0 1 2.118 12C2.118 6.533 6.533 2.118 12 2.118S21.882 6.533 21.882 12 17.467 21.882 12 21.882z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a
+          href="/"
+          style="color:#C8C0B5;text-decoration:none;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:0.4rem;transition:all 0.3s cubic-bezier(0.32,0.72,0,1);"
+          onmouseover="this.style.color='#F2EDE6';this.style.gap='0.7rem'"
+          onmouseout="this.style.color='#C8C0B5';this.style.gap='0.4rem'"
+        >
+          Volver al inicio <span>→</span>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="reveal reveal-delay-4" style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;">
+        <div style="flex:1;height:1px;background:linear-gradient(to right, transparent, rgba(125,29,63,0.3));"></div>
+        <span style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;">mientras tanto</span>
+        <div style="flex:1;height:1px;background:linear-gradient(to left, transparent, rgba(125,29,63,0.3));"></div>
+      </div>
+
+      <!-- What happens next -->
+      <div class="reveal reveal-delay-4" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(125,29,63,0.15);border:1px solid rgba(125,29,63,0.15);">
+        {[
+          { numero: "01", texto: "Reviso tu mensaje y entiendo tu negocio" },
+          { numero: "02", texto: "Te propongo el formato y el precio exacto" },
+          { numero: "03", texto: "Arrancamos con el MVP en 48hs" },
+        ].map(step => (
+          <div style="background:#0A0808;padding:1.5rem 1rem;text-align:left;">
+            <p style="font-family:'Playfair Display',serif;font-size:0.85rem;color:rgba(196,149,106,0.5);margin-bottom:0.6rem;">{step.numero}</p>
+            <p style="font-size:0.8rem;color:#C8C0B5;font-family:'Outfit',sans-serif;line-height:1.6;font-weight:300;">{step.texto}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes ring-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+
+  @media (max-width: 600px) {
+    main > div > div:last-child {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

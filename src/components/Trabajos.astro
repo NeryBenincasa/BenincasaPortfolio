@@ -1,0 +1,112 @@
+---
+const trabajos = [
+  {
+    numero: "01",
+    titulo: "Atom Amoblamiento",
+    descripcion: "Landing para fabricante de muebles a medida en Rosario. Galería por categorías, video de marca y contacto directo vía WhatsApp.",
+    tags: ["Landing Page", "Carpintería"],
+    url: "https://nerybenincasa.github.io/atom.amoblamiento.copia/",
+    acento: "#8B5E3C",
+    bg: "rgba(139,94,60,0.07)",
+  },
+  {
+    numero: "02",
+    titulo: "De Buena Madera",
+    descripcion: "Sitio para vinería & charcutería en Rosario. Diseño oscuro y elegante con carta, historia de la marca y reservas.",
+    tags: ["Landing Page", "Gastronomía"],
+    url: "https://nerybenincasa.github.io/vineria-de-buena-madera/",
+    acento: "#C9A84C",
+    bg: "rgba(201,168,76,0.07)",
+  },
+  {
+    numero: "03",
+    titulo: "Puente Sur",
+    descripcion: "Sitio corporativo para empresa de agroenlaces. Hero de alto impacto, propuesta de valor clara y formulario de captación de leads.",
+    tags: ["Sitio Corporativo", "Agro"],
+    url: "https://nerybenincasa.github.io/puente-sur/",
+    acento: "#4A7FA5",
+    bg: "rgba(74,127,165,0.07)",
+  },
+];
+---
+
+<section id="trabajos" style="padding:clamp(6rem,11vw,9rem) 2rem;position:relative;">
+
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right, transparent, rgba(125,29,63,0.35), transparent);"></div>
+
+  <div style="max-width:72rem;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem;flex-wrap:wrap;">
+      <div>
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.25rem;">
+          <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Trabajos</span>
+        </div>
+        <h2 class="reveal reveal-delay-1" style="font-size:clamp(2rem,3.8vw,3rem);font-weight:500;color:#F2EDE6;letter-spacing:-0.025em;line-height:1.1;">
+          Sitios que ya están<br/>generando clientes
+        </h2>
+      </div>
+      <p class="reveal reveal-delay-2" style="color:#C8C0B5;font-size:0.95rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;max-width:36ch;">
+        Cada uno fue construido desde cero, con diseño a medida y enfoque en conversión.
+      </p>
+    </div>
+
+    <!-- Grilla de proyectos -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(125,29,63,0.15);" class="trabajos-grid">
+      {trabajos.map((t, i) => (
+        <a
+          href={t.url}
+          target="_blank"
+          rel="noopener"
+          class={`reveal reveal-delay-${i + 1}`}
+          style={`display:flex;flex-direction:column;background:#0D0A0A;padding:2.5rem;text-decoration:none;position:relative;overflow:hidden;transition:background 0.3s;`}
+          onmouseover={`this.style.background='${t.bg}'`}
+          onmouseout="this.style.background='#0D0A0A'"
+        >
+          <!-- Accent top line -->
+          <div style={`position:absolute;top:0;left:0;right:0;height:2px;background:${t.acento};transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.32,0.72,0,1);`}
+            class="accent-line"></div>
+
+          <!-- Número -->
+          <span style={`font-family:'Playfair Display',serif;font-size:0.85rem;color:${t.acento};opacity:0.5;margin-bottom:2rem;display:block;`}>{t.numero}</span>
+
+          <!-- Título -->
+          <h3 style="font-size:1.35rem;font-weight:500;color:#F2EDE6;letter-spacing:-0.02em;margin-bottom:0.85rem;">{t.titulo}</h3>
+
+          <!-- Descripción -->
+          <p style="color:#C8C0B5;font-size:0.875rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;flex:1;">{t.descripcion}</p>
+
+          <!-- Tags + arrow -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2rem;flex-wrap:wrap;gap:0.5rem;">
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+              {t.tags.map(tag => (
+                <span style={`font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:${t.acento};border:1px solid ${t.acento}40;padding:0.2rem 0.6rem;border-radius:9999px;font-family:'Outfit',sans-serif;`}>{tag}</span>
+              ))}
+            </div>
+            <span style={`color:${t.acento};font-size:0.9rem;transition:transform 0.3s;`} class="arrow">↗</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .trabajos-grid a:hover .accent-line {
+    transform: scaleX(1) !important;
+  }
+  .trabajos-grid a:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+  @media (max-width: 900px) {
+    .trabajos-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .trabajos-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+</style>

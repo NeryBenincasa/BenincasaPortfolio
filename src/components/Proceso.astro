@@ -1,0 +1,84 @@
+---
+const pasos = [
+  {
+    numero: "01",
+    titulo: "Brief en 20 minutos",
+    descripcion: "Una llamada o formulario corto. Me contás qué hacés, a quién le hablás y qué querés lograr. Sin tecnicismos, sin formularios interminables."
+  },
+  {
+    numero: "02",
+    titulo: "MVP en 48 horas",
+    descripcion: "Armó una versión real de tu sitio con tu identidad, tus colores y tu copy. No un boceto: un sitio funcional que ya podés mostrar."
+  },
+  {
+    numero: "03",
+    titulo: "Ajustamos juntos",
+    descripcion: "Revisamos el MVP, ajustamos lo que necesites. Tenés acceso a cambios hasta que el resultado sea exactamente lo que imaginabas."
+  },
+  {
+    numero: "04",
+    titulo: "Online y listo",
+    descripcion: "Deploy, dominio, SEO técnico. Tu sitio vive en internet, optimizado, rápido y con todo configurado para que Google lo encuentre."
+  }
+];
+---
+<section id="proceso" style="padding:clamp(6rem,11vw,9rem) 2rem;background:#0D0A0A;position:relative;">
+
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right, transparent, rgba(125,29,63,0.35), transparent);"></div>
+
+  <div style="max-width:72rem;margin:0 auto;">
+
+    <div style="display:grid;grid-template-columns:2fr 3fr;gap:6rem;align-items:start;" class="proceso-layout">
+
+      <!-- Sticky left -->
+      <div style="position:sticky;top:7rem;">
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.25rem;">
+          <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Proceso</span>
+        </div>
+        <h2 class="reveal reveal-delay-1" style="font-size:clamp(1.8rem,3vw,2.6rem);font-weight:500;color:#F2EDE6;line-height:1.15;letter-spacing:-0.025em;margin-bottom:1.25rem;">
+          Simple, rápido,<br/>sin sorpresas.
+        </h2>
+        <p class="reveal reveal-delay-2" style="color:#C8C0B5;font-size:0.9rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;">
+          Un proceso probado que elimina las idas y vueltas. Sabés en cada momento qué está pasando y cuándo tenés resultado.
+        </p>
+      </div>
+
+      <!-- Pasos -->
+      <div>
+        {pasos.map((paso, i) => (
+          <div
+            class={`reveal reveal-delay-${i + 1}`}
+            style={`display:grid;grid-template-columns:2.5rem 1fr;gap:1.5rem;padding:2rem 0;${i < pasos.length - 1 ? 'border-bottom:1px solid rgba(125,29,63,0.15);' : ''}`}
+          >
+            <!-- Número col -->
+            <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.2rem;">
+              <span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:rgba(196,149,106,0.5);line-height:1;">{paso.numero}</span>
+              {i < pasos.length - 1 && (
+                <div style="width:1px;flex:1;background:linear-gradient(to bottom, rgba(125,29,63,0.25), transparent);margin-top:0.75rem;min-height:1.5rem;"></div>
+              )}
+            </div>
+
+            <!-- Contenido -->
+            <div style="padding-bottom:0.25rem;">
+              <h3 style="font-size:1.15rem;font-weight:500;color:#F2EDE6;margin-bottom:0.6rem;letter-spacing:-0.01em;" set:html={paso.titulo.replace('MVP', '<span class="mvp-tip" data-tip="Primera versión real de tu sitio, lista para mostrar">MVP</span>')}></h3>
+              <p style="color:#C8C0B5;font-size:0.875rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;">{paso.descripcion}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .proceso-layout {
+      grid-template-columns: 1fr !important;
+      gap: 3rem !important;
+    }
+    .proceso-layout > div:first-child {
+      position: static !important;
+    }
+  }
+</style>

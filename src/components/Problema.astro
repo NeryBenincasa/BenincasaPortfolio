@@ -1,0 +1,68 @@
+---
+---
+<section style="padding:clamp(6rem,11vw,9rem) 2rem;">
+  <div style="max-width:72rem;margin:0 auto;">
+
+    <!-- Header centrado -->
+    <div style="max-width:52rem;margin:0 auto 5rem;text-align:center;">
+      <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.5rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">El problema</span>
+      </div>
+      <h2 class="reveal reveal-delay-1" style="font-size:clamp(2rem,4.5vw,3.5rem);font-weight:500;color:#F2EDE6;line-height:1.12;letter-spacing:-0.025em;margin-bottom:1.5rem;">
+        Tu negocio existe.<br/>
+        <em style="color:#7D1D3F;font-style:italic;">¿Pero te encuentran?</em>
+      </h2>
+      <p class="reveal reveal-delay-2" style="color:#C8C0B5;font-size:1rem;line-height:1.8;font-weight:300;font-family:'Outfit',sans-serif;">
+        Hoy, si un negocio no tiene presencia web, para la mayoría de sus potenciales clientes simplemente no existe. No importa cuántos años lleva trabajando — si no están en internet, están perdiendo clientes todos los días sin saberlo.
+      </p>
+    </div>
+
+    <!-- Comparación: dos columnas -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="problema-grid">
+
+      <!-- Sin web -->
+      <div class="reveal" style="background:#0E0B0B;border:1px solid rgba(125,29,63,0.2);padding:2.5rem;">
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#7A7068;margin-bottom:1.75rem;font-family:'Outfit',sans-serif;">Sin sitio web</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+          {[
+            "Dependen solo del boca a boca",
+            "No aparecen en Google",
+            "El cliente no los puede evaluar antes de llamar",
+            "Compiten en desventaja permanente"
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:0.9rem;color:#7A7068;font-size:0.9rem;line-height:1.5;font-family:'Outfit',sans-serif;">
+              <span style="color:#4A0E24;font-size:0.8rem;margin-top:0.15rem;flex-shrink:0;">✕</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Con Benincasa -->
+      <div class="reveal reveal-delay-1" style="background:#160D10;border:1px solid rgba(125,29,63,0.45);padding:2.5rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right, #7D1D3F, #C4956A);"></div>
+        <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#C4956A;margin-bottom:1.75rem;font-family:'Outfit',sans-serif;">Con Benincasa</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:1rem;">
+          {[
+            "Presencia profesional desde el día uno",
+            "Optimizado para aparecer en Google",
+            "El cliente llega convencido antes de contactarte",
+            "Diseño que distingue, no que imita"
+          ].map(item => (
+            <li style="display:flex;align-items:flex-start;gap:0.9rem;color:#F2EDE6;font-size:0.9rem;line-height:1.5;font-family:'Outfit',sans-serif;">
+              <span style="color:#C4956A;font-size:0.8rem;margin-top:0.15rem;flex-shrink:0;">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 640px) {
+    .problema-grid { grid-template-columns: 1fr !important; }
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+const servicios = [
+  {
+    numero: "01",
+    titulo: "Landing Page",
+    descripcion: "Una sola página, un solo objetivo: que el visitante tome acción. Diseñada para convertir, cargada en menos de 2 segundos.",
+    detalle: ["Diseño orientado a conversión", "Copy incluido", "Formulario de contacto", "Entrega en 48–72hs"],
+    precio: "$250 USD",
+    tag: "Más solicitado"
+  },
+  {
+    numero: "02",
+    titulo: "Sitio Corporativo",
+    descripcion: "La casa digital completa de tu negocio. Profesional, rápida, fácil de actualizar. La que convierte visitas en consultas.",
+    detalle: ["Hasta 5 páginas", "SEO técnico incluido", "Panel de administración", "Entrega en 7–10 días"],
+    precio: "$600 USD",
+    tag: null
+  },
+  {
+    numero: "03",
+    titulo: `<span class="mvp-tip" data-tip="Primera versión real de tu idea, funcional y navegable">MVP</span> de Producto`,
+    descripcion: "¿Tenés una idea y necesitás mostrársela a alguien? Te armo una versión funcional y convincente para validar antes de invertir más.",
+    detalle: ["Diseño de alta fidelidad", "Interacciones reales", "Deploy inmediato", "Entrega en 3–5 días"],
+    precio: "$400 USD",
+    tag: null
+  }
+];
+---
+<section id="servicios" style="padding:clamp(6rem,11vw,9rem) 2rem;position:relative;">
+
+  <div style="position:absolute;bottom:-6rem;right:-4rem;width:32rem;height:32rem;background:radial-gradient(circle, rgba(125,29,63,0.07) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:72rem;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem;flex-wrap:wrap;">
+      <div>
+        <div class="reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:1.25rem;">
+          <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Servicios</span>
+        </div>
+        <h2 class="reveal reveal-delay-1" style="font-size:clamp(2rem,3.8vw,3rem);font-weight:500;color:#F2EDE6;letter-spacing:-0.025em;line-height:1.1;">
+          Lo que construyo para vos
+        </h2>
+      </div>
+      <p class="reveal reveal-delay-2" style="color:#C8C0B5;font-size:0.95rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;max-width:38ch;">
+        Cada proyecto es distinto. Estos son los formatos con los que trabajo, siempre con el mismo estándar de calidad.
+      </p>
+    </div>
+
+    <!-- Servicios list -->
+    <div>
+      {servicios.map((s, i) => (
+        <div
+          class={`reveal reveal-delay-${i + 1}`}
+          style="display:grid;grid-template-columns:4rem 1fr auto;gap:0;border-top:1px solid rgba(125,29,63,0.18);align-items:stretch;"
+        >
+          <!-- Número -->
+          <div style="padding:2.5rem 0;display:flex;align-items:flex-start;justify-content:flex-start;padding-right:2rem;">
+            <span style="font-family:'Playfair Display',serif;font-size:1rem;color:rgba(196,149,106,0.5);font-weight:400;letter-spacing:0.05em;padding-top:0.2rem;">{s.numero}</span>
+          </div>
+
+          <!-- Contenido principal -->
+          <div style="padding:2.5rem 3rem 2.5rem 0;border-right:1px solid rgba(125,29,63,0.18);display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+            <!-- Título y descripción -->
+            <div>
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.85rem;flex-wrap:wrap;">
+                <h3 style="font-size:1.5rem;font-weight:500;color:#F2EDE6;letter-spacing:-0.02em;" set:html={s.titulo}></h3>
+                {s.tag && (
+                  <span style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#C4956A;border:1px solid rgba(196,149,106,0.35);padding:0.2rem 0.65rem;border-radius:9999px;font-family:'Outfit',sans-serif;white-space:nowrap;">{s.tag}</span>
+                )}
+              </div>
+              <p style="color:#C8C0B5;font-size:0.9rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;">{s.descripcion}</p>
+            </div>
+
+            <!-- Detalles -->
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;padding-top:0.2rem;">
+              {s.detalle.map(d => (
+                <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.85rem;color:#C8C0B5;font-family:'Outfit',sans-serif;">
+                  <span style="width:1px;height:0.8rem;background:#7D1D3F;flex-shrink:0;display:inline-block;"></span>
+                  {d}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Precio -->
+          <div style="padding:2.5rem 0 2.5rem 3rem;display:flex;align-items:flex-start;justify-content:flex-end;">
+            <div style="text-align:right;">
+              <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;margin-bottom:0.4rem;">desde</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#C4956A;white-space:nowrap;">{s.precio}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+      <!-- Last border -->
+      <div style="border-top:1px solid rgba(125,29,63,0.18);"></div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    #servicios [style*="grid-template-columns:4rem"] {
+      grid-template-columns: 1fr !important;
+    }
+    #servicios [style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    #servicios [style*="padding:2.5rem 3rem 2.5rem 0"] {
+      padding: 1.5rem 0 !important;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(125,29,63,0.18) !important;
+    }
+    #servicios [style*="padding:2.5rem 0 2.5rem 3rem"] {
+      padding: 1rem 0 1.5rem !important;
+      justify-content: flex-start !important;
+      text-align: left !important;
+    }
+    #servicios [style*="padding:2.5rem 0;display:flex"] {
+      display: none !important;
+    }
+  }
+</style>
