@@ -227,14 +227,68 @@ html {
   color: #5A4F45 !important;
 }
 
-/* Muted text */
+/* Muted text — needs more contrast on light bg */
 [data-theme="light"] [style*="color:#7A7068"] {
-  color: #8A7E74 !important;
+  color: #6B5F55 !important;
 }
 
-/* Copper accents stay */
+/* Copper accents — darker for light bg */
 [data-theme="light"] [style*="color:#C4956A"] {
-  color: #9A6F3A !important;
+  color: #8B6530 !important;
+}
+
+/* Bordeaux italic emphasis — needs contrast on light */
+[data-theme="light"] em[style*="color:#7D1D3F"] {
+  color: #7D1D3F !important;
+}
+
+/* Stat values */
+[data-theme="light"] p[style*="font-family:'Playfair Display'"][style*="font-size:2rem"] {
+  color: #1A1412 !important;
+}
+
+/* Badge pills */
+[data-theme="light"] [style*="color:#C4956A"][style*="letter-spacing:0.2em"] {
+  color: #8B6530 !important;
+}
+
+/* Accent numbers (01, 02, 03) with opacity */
+[data-theme="light"] span[style*="opacity:0.5"] {
+  opacity: 0.7 !important;
+}
+
+/* Border colors — more visible on light */
+[data-theme="light"] [style*="border-top:1px solid rgba(125,29,63,0.18)"],
+[data-theme="light"] [style*="border-bottom:1px solid rgba(125,29,63,0.15)"] {
+  border-color: rgba(125,29,63,0.2) !important;
+}
+
+/* Process step vertical lines */
+[data-theme="light"] [style*="background:linear-gradient(to bottom, rgba(125,29,63,0.25)"] {
+  opacity: 0.8;
+}
+
+/* Service detail bars */
+[data-theme="light"] span[style*="width:1px"][style*="background:#7D1D3F"] {
+  background: #7D1D3F !important;
+}
+
+/* Tag borders in servicios */
+[data-theme="light"] span[style*="border:1px solid rgba(196,149,106,0.35)"] {
+  color: #8B6530 !important;
+  border-color: rgba(139,101,48,0.4) !important;
+}
+
+/* Sobre mi habilidades text */
+[data-theme="light"] .faq-item summary span:first-child,
+[data-theme="light"] details summary span {
+  color: #1A1412 !important;
+}
+
+/* Button text always white on bordeaux bg */
+[data-theme="light"] a[style*="background:#7D1D3F"],
+[data-theme="light"] button[style*="background:#7D1D3F"] {
+  color: #F2EDE6 !important;
 }
 
 /* Card backgrounds */
@@ -314,7 +368,21 @@ html {
 }
 
 /* Logo */
-[data-theme="light"] a[style*="color:#F2EDE6"][style*="Playfair"] {
+[data-theme="light"] a[style*="Playfair Display"] {
+  color: #1A1412 !important;
+}
+
+/* Nav CTA button text stays white */
+[data-theme="light"] nav a[style*="background:#7D1D3F"] {
+  color: #F2EDE6 !important;
+}
+
+/* Footer text */
+[data-theme="light"] footer p,
+[data-theme="light"] footer a {
+  color: #5A4F45 !important;
+}
+[data-theme="light"] footer p[style*="color:#F2EDE6"] {
   color: #1A1412 !important;
 }
 

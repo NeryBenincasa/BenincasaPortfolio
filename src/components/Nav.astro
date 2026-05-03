@@ -96,21 +96,19 @@
 </header>
 
 <!-- Mobile menu overlay -->
-<div id="mobile-menu" style="position:fixed;inset:0;z-index:49;background:rgba(10,8,8,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;opacity:0;pointer-events:none;transition:opacity 0.35s cubic-bezier(0.32,0.72,0,1);">
-  <a href="#servicios" class="mobile-menu-link" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#F2EDE6;text-decoration:none;letter-spacing:-0.02em;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);">Servicios</a>
-  <a href="#trabajos" class="mobile-menu-link" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#F2EDE6;text-decoration:none;letter-spacing:-0.02em;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);">Trabajos</a>
-  <a href="#proceso" class="mobile-menu-link" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#F2EDE6;text-decoration:none;letter-spacing:-0.02em;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);">Proceso</a>
-  <a href="#sobre-mi" class="mobile-menu-link" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#F2EDE6;text-decoration:none;letter-spacing:-0.02em;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);">Sobre mí</a>
-  <a href="#faq" class="mobile-menu-link" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:#F2EDE6;text-decoration:none;letter-spacing:-0.02em;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);">FAQ</a>
-  <div style="width:3rem;height:1px;background:rgba(125,29,63,0.4);margin:0.5rem 0;"></div>
-  <a
-    href="#contacto"
-    class="mobile-menu-link"
-    style="display:inline-flex;align-items:center;gap:0.6rem;background:#7D1D3F;color:#F2EDE6;text-decoration:none;padding:0.9rem 2rem;border-radius:9999px;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:500;font-family:'Outfit',sans-serif;transform:translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.32,0.72,0,1);"
-  >
-    Hablemos
-    <span style="display:inline-flex;align-items:center;justify-content:center;width:1.4rem;height:1.4rem;border-radius:50%;background:rgba(255,255,255,0.15);font-size:0.7rem;">↗</span>
-  </a>
+<div id="mobile-menu" class="mobile-menu-overlay">
+  <nav class="mobile-menu-nav">
+    <a href="#servicios" class="mobile-menu-link">Servicios</a>
+    <a href="#trabajos" class="mobile-menu-link">Trabajos</a>
+    <a href="#proceso" class="mobile-menu-link">Proceso</a>
+    <a href="#sobre-mi" class="mobile-menu-link">Sobre mí</a>
+    <a href="#faq" class="mobile-menu-link">FAQ</a>
+    <div style="width:3rem;height:1px;background:rgba(125,29,63,0.4);margin:0.5rem auto;"></div>
+    <a href="#contacto" class="mobile-menu-link mobile-menu-cta">
+      Hablemos
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:1.4rem;height:1.4rem;border-radius:50%;background:rgba(255,255,255,0.15);font-size:0.7rem;">↗</span>
+    </a>
+  </nav>
 </div>
 
 <style>
@@ -137,30 +135,88 @@
     transform: rotate(-45deg) translate(4.5px, -4.5px);
   }
 
+  /* Mobile menu — full viewport */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 49;
+    background: rgba(10,8,8,0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.32,0.72,0,1);
+    overflow-y: auto;
+  }
+
+  .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 5rem 2rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .mobile-menu-link {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 5vw, 1.75rem);
+    font-weight: 500;
+    color: #F2EDE6;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.32,0.72,0,1);
+  }
+
+  .mobile-menu-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #7D1D3F;
+    color: #F2EDE6 !important;
+    padding: 0.9rem 2rem;
+    border-radius: 9999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
   /* Mobile menu open */
-  #mobile-menu.open {
-    opacity: 1 !important;
-    pointer-events: auto !important;
+  .mobile-menu-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  #mobile-menu.open .mobile-menu-link {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+  .mobile-menu-overlay.open .mobile-menu-link {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  #mobile-menu.open .mobile-menu-link:nth-child(1) { transition-delay: 0.05s; }
-  #mobile-menu.open .mobile-menu-link:nth-child(2) { transition-delay: 0.1s; }
-  #mobile-menu.open .mobile-menu-link:nth-child(3) { transition-delay: 0.15s; }
-  #mobile-menu.open .mobile-menu-link:nth-child(4) { transition-delay: 0.2s; }
-  #mobile-menu.open .mobile-menu-link:nth-child(5) { transition-delay: 0.25s; }
-  #mobile-menu.open .mobile-menu-link:nth-child(7) { transition-delay: 0.35s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(1) { transition-delay: 0.05s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(2) { transition-delay: 0.1s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(3) { transition-delay: 0.15s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(4) { transition-delay: 0.2s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(5) { transition-delay: 0.25s; }
+  .mobile-menu-overlay.open .mobile-menu-link:nth-child(7) { transition-delay: 0.35s; }
 
   /* Light theme overrides for mobile menu */
-  [data-theme="light"] #mobile-menu {
+  [data-theme="light"] .mobile-menu-overlay {
     background: rgba(245,240,232,0.97) !important;
   }
   [data-theme="light"] .mobile-menu-link {
     color: #1A1412 !important;
+  }
+  [data-theme="light"] .mobile-menu-cta {
+    color: #F2EDE6 !important;
   }
   [data-theme="light"] .hamburger-line {
     background: #1A1412 !important;

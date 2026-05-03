@@ -5,25 +5,31 @@ const trabajos = [
     titulo: "Atom Amoblamiento",
     descripcion: "Landing para fabricante de muebles a medida en Rosario. Galería por categorías, video de marca y contacto directo vía WhatsApp.",
     tags: ["Landing Page", "Carpintería"],
+    tipo: "Cliente",
     url: "https://nerybenincasa.github.io/atom.amoblamiento.copia/",
+    imagen: "/trabajos/atom.webp",
     acento: "#8B5E3C",
     bg: "rgba(139,94,60,0.07)",
   },
   {
     numero: "02",
     titulo: "De Buena Madera",
-    descripcion: "Sitio para vinería & charcutería en Rosario. Diseño oscuro y elegante con carta, historia de la marca y reservas.",
+    descripcion: "Concepto de sitio para vinería & charcutería. Diseño oscuro y elegante con carta, historia de marca y sistema de reservas.",
     tags: ["Landing Page", "Gastronomía"],
+    tipo: "Concepto",
     url: "https://nerybenincasa.github.io/vineria-de-buena-madera/",
+    imagen: "/trabajos/debuenamadera.webp",
     acento: "#C9A84C",
     bg: "rgba(201,168,76,0.07)",
   },
   {
     numero: "03",
     titulo: "Puente Sur",
-    descripcion: "Sitio corporativo para empresa de agroenlaces. Hero de alto impacto, propuesta de valor clara y formulario de captación de leads.",
+    descripcion: "Concepto de sitio corporativo para empresa de agro. Hero de alto impacto, propuesta de valor clara y formulario de captación.",
     tags: ["Sitio Corporativo", "Agro"],
+    tipo: "Concepto",
     url: "https://nerybenincasa.github.io/puente-sur/",
+    imagen: "/trabajos/puentesur.webp",
     acento: "#4A7FA5",
     bg: "rgba(74,127,165,0.07)",
   },
@@ -43,11 +49,11 @@ const trabajos = [
           <span style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#C4956A;font-family:'Outfit',sans-serif;font-weight:500;">Trabajos</span>
         </div>
         <h2 class="reveal reveal-delay-1" style="font-size:clamp(2rem,3.8vw,3rem);font-weight:500;color:#F2EDE6;letter-spacing:-0.025em;line-height:1.1;">
-          Sitios que ya están<br/>generando clientes
+          Lo que construyo<br/>se ve así
         </h2>
       </div>
       <p class="reveal reveal-delay-2" style="color:#C8C0B5;font-size:0.95rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;max-width:36ch;">
-        Cada uno fue construido desde cero, con diseño a medida y enfoque en conversión.
+        Proyectos reales y conceptos. Cada uno construido desde cero, con diseño a medida y enfoque en conversión.
       </p>
     </div>
 
@@ -58,32 +64,50 @@ const trabajos = [
           href={t.url}
           target="_blank"
           rel="noopener"
-          class={`reveal reveal-delay-${i + 1}`}
-          style={`display:flex;flex-direction:column;background:#0D0A0A;padding:2.5rem;text-decoration:none;position:relative;overflow:hidden;transition:background 0.3s;`}
-          onmouseover={`this.style.background='${t.bg}'`}
-          onmouseout="this.style.background='#0D0A0A'"
+          class={`reveal reveal-delay-${i + 1} trabajo-card`}
+          style={`display:flex;flex-direction:column;background:#0D0A0A;text-decoration:none;position:relative;overflow:hidden;transition:background 0.3s;`}
         >
           <!-- Accent top line -->
           <div style={`position:absolute;top:0;left:0;right:0;height:2px;background:${t.acento};transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.32,0.72,0,1);`}
             class="accent-line"></div>
 
-          <!-- Número -->
-          <span style={`font-family:'Playfair Display',serif;font-size:0.85rem;color:${t.acento};opacity:0.5;margin-bottom:2rem;display:block;`}>{t.numero}</span>
-
-          <!-- Título -->
-          <h3 style="font-size:1.35rem;font-weight:500;color:#F2EDE6;letter-spacing:-0.02em;margin-bottom:0.85rem;">{t.titulo}</h3>
-
-          <!-- Descripción -->
-          <p style="color:#C8C0B5;font-size:0.875rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;flex:1;">{t.descripcion}</p>
-
-          <!-- Tags + arrow -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2rem;flex-wrap:wrap;gap:0.5rem;">
-            <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-              {t.tags.map(tag => (
-                <span style={`font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:${t.acento};border:1px solid ${t.acento}40;padding:0.2rem 0.6rem;border-radius:9999px;font-family:'Outfit',sans-serif;`}>{tag}</span>
-              ))}
+          <!-- Screenshot preview -->
+          <div class="trabajo-preview" style={`position:relative;aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg, ${t.bg.replace('0.07', '0.15')}, #0D0A0A 70%);`}>
+            <img
+              src={t.imagen}
+              alt={`Preview de ${t.titulo}`}
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 0.6s cubic-bezier(0.32,0.72,0,1);"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+            />
+            <!-- Fallback gradient si no hay imagen -->
+            <div style={`display:none;position:absolute;inset:0;background:linear-gradient(135deg, ${t.bg.replace('0.07', '0.12')}, rgba(13,10,10,0.95));align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;`}>
+              <span style={`font-family:'Playfair Display',serif;font-size:2rem;color:${t.acento};opacity:0.3;`}>{t.titulo.charAt(0)}</span>
+              <span style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;">Preview</span>
             </div>
-            <span style={`color:${t.acento};font-size:0.9rem;transition:transform 0.3s;`} class="arrow">↗</span>
+            <!-- Overlay gradient for text readability -->
+            <div style="position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top, #0D0A0A, transparent);pointer-events:none;"></div>
+            <!-- Tipo badge -->
+            <span style={`position:absolute;top:0.75rem;right:0.75rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:9999px;font-family:'Outfit',sans-serif;font-weight:500;${t.tipo === 'Cliente' ? `background:rgba(139,94,60,0.25);color:${t.acento};border:1px solid ${t.acento}40;` : `background:rgba(255,255,255,0.08);color:#7A7068;border:1px solid rgba(255,255,255,0.1);`}`}>{t.tipo}</span>
+          </div>
+
+          <!-- Content -->
+          <div style="padding:1.5rem 2rem 2rem;">
+            <!-- Título -->
+            <h3 style="font-size:1.25rem;font-weight:500;color:#F2EDE6;letter-spacing:-0.02em;margin-bottom:0.65rem;">{t.titulo}</h3>
+
+            <!-- Descripción -->
+            <p style="color:#C8C0B5;font-size:0.85rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;flex:1;">{t.descripcion}</p>
+
+            <!-- Tags + arrow -->
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;flex-wrap:wrap;gap:0.5rem;">
+              <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                {t.tags.map(tag => (
+                  <span style={`font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:${t.acento};border:1px solid ${t.acento}40;padding:0.2rem 0.55rem;border-radius:9999px;font-family:'Outfit',sans-serif;`}>{tag}</span>
+                ))}
+              </div>
+              <span style={`color:${t.acento};font-size:0.9rem;transition:transform 0.3s;`} class="arrow">↗</span>
+            </div>
           </div>
         </a>
       ))}
@@ -99,6 +123,10 @@ const trabajos = [
   .trabajos-grid a:hover .arrow {
     transform: translate(3px, -3px);
   }
+  /* Zoom image on hover */
+  .trabajo-card:hover .trabajo-preview img {
+    transform: scale(1.05);
+  }
   @media (max-width: 900px) {
     .trabajos-grid {
       grid-template-columns: 1fr !important;
@@ -108,5 +136,15 @@ const trabajos = [
     .trabajos-grid {
       grid-template-columns: repeat(2, 1fr) !important;
     }
+  }
+
+  /* Light theme */
+  [data-theme="light"] .trabajo-preview div[style*="background:linear-gradient(to top"] {
+    background: linear-gradient(to top, #FFFFFF, transparent) !important;
+  }
+  [data-theme="light"] .trabajo-preview span[style*="background:rgba(255,255,255,0.08)"] {
+    background: rgba(0,0,0,0.06) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+    color: #5A4F45 !important;
   }
 </style>
