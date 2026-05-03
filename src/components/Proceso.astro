@@ -7,13 +7,13 @@ const pasos = [
   },
   {
     numero: "02",
-    titulo: "MVP en 48 horas",
-    descripcion: "Armó una versión real de tu sitio con tu identidad, tus colores y tu copy. No un boceto: un sitio funcional que ya podés mostrar."
+    titulo: "Primera versión en 48 horas",
+    descripcion: "Armo una versión real de tu sitio con tu identidad, tus colores y tu contenido. No un boceto: un sitio funcional que ya podés mostrar."
   },
   {
     numero: "03",
     titulo: "Ajustamos juntos",
-    descripcion: "Revisamos el MVP, ajustamos lo que necesites. Tenés acceso a cambios hasta que el resultado sea exactamente lo que imaginabas."
+    descripcion: "Revisamos la primera versión, ajustamos lo que necesites. Tenés acceso a cambios hasta que el resultado sea exactamente lo que imaginabas."
   },
   {
     numero: "04",
@@ -60,7 +60,7 @@ const pasos = [
 
             <!-- Contenido -->
             <div style="padding-bottom:0.25rem;">
-              <h3 style="font-size:1.15rem;font-weight:500;color:#F2EDE6;margin-bottom:0.6rem;letter-spacing:-0.01em;" set:html={paso.titulo.replace('MVP', '<span class="mvp-tip" data-tip="Primera versión real de tu sitio, lista para mostrar">MVP</span>')}></h3>
+              <h3 style="font-size:1.15rem;font-weight:500;color:#F2EDE6;margin-bottom:0.6rem;letter-spacing:-0.01em;" set:html={paso.titulo}></h3>
               <p style="color:#C8C0B5;font-size:0.875rem;line-height:1.75;font-weight:300;font-family:'Outfit',sans-serif;">{paso.descripcion}</p>
             </div>
           </div>

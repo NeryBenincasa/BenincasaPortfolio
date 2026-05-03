@@ -53,17 +53,14 @@
     <!-- Stats -->
     <div class="reveal reveal-delay-4" style="display:flex;gap:0;border-top:1px solid rgba(125,29,63,0.2);flex-wrap:wrap;">
       {[
-        { valor: "48hs", label: "MVP entregado", tip: true },
+        { valor: "48hs", label: "Primera versión lista" },
         { valor: "95+", label: "PageSpeed score" },
         { valor: "100%", label: "Diseño a medida" },
       ].map((stat, i) => (
         <div style={`padding:1.5rem 2.5rem;${i > 0 ? 'border-left:1px solid rgba(125,29,63,0.2);' : ''}`}>
           <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;color:#F2EDE6;line-height:1;">{stat.valor}</p>
           <p style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#7A7068;margin-top:0.4rem;font-family:'Outfit',sans-serif;">
-            {stat.tip
-              ? <><span class="mvp-tip" data-tip="Primera versión real de tu sitio, lista para mostrar">MVP</span> entregado</>
-              : stat.label
-            }
+            {stat.label}
           </p>
         </div>
       ))}
@@ -76,7 +73,7 @@
     <div class="marquee-track" style="display:flex;gap:0;white-space:nowrap;width:max-content;animation:marquee 22s linear infinite;">
       {Array(3).fill(null).map(() => (
         <span style="display:inline-flex;align-items:center;gap:2.5rem;padding:0 2.5rem;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;">
-          Landing pages · Sitios corporativos · MVPs de producto
+          Landing pages · Sitios corporativos · Prototipos funcionales
           <span style="width:4px;height:4px;border-radius:50%;background:#7D1D3F;display:inline-block;flex-shrink:0;"></span>
           Entrega en 48hs · PageSpeed 95+ · Diseño con carácter
           <span style="width:4px;height:4px;border-radius:50%;background:#7D1D3F;display:inline-block;flex-shrink:0;"></span>
