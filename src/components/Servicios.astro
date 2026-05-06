@@ -5,7 +5,6 @@ const servicios = [
     titulo: "Landing Page",
     descripcion: "Una sola página, un solo objetivo: que el visitante tome acción. Diseñada para convertir, cargada en menos de 2 segundos.",
     detalle: ["Diseño orientado a conversión", "Copy incluido", "Formulario de contacto", "Entrega en 48–72hs"],
-    precio: "$250 USD",
     tag: "Más solicitado"
   },
   {
@@ -13,7 +12,6 @@ const servicios = [
     titulo: "Sitio Corporativo",
     descripcion: "La casa digital completa de tu negocio. Profesional, rápida, fácil de actualizar. La que convierte visitas en consultas.",
     detalle: ["Hasta 5 páginas", "SEO técnico incluido", "Panel de administración", "Entrega en 7–10 días"],
-    precio: "$600 USD",
     tag: null
   },
   {
@@ -21,12 +19,11 @@ const servicios = [
     titulo: `Prototipo de Producto`,
     descripcion: "¿Tenés una idea y necesitás mostrársela a alguien? Te armo una primera versión funcional y convincente para validar antes de invertir más.",
     detalle: ["Diseño de alta fidelidad", "Interacciones reales", "Deploy inmediato", "Entrega en 3–5 días"],
-    precio: "$400 USD",
     tag: null
   }
 ];
 ---
-<section id="servicios" style="padding:clamp(6rem,11vw,9rem) 2rem;position:relative;">
+<section id="servicios" style="padding:clamp(6rem,11vw,9rem) 2rem;position:relative;overflow:hidden;">
 
   <div style="position:absolute;bottom:-6rem;right:-4rem;width:32rem;height:32rem;background:radial-gradient(circle, rgba(125,29,63,0.07) 0%, transparent 70%);pointer-events:none;"></div>
 
@@ -83,12 +80,16 @@ const servicios = [
             </ul>
           </div>
 
-          <!-- Precio -->
-          <div style="padding:2.5rem 0 2.5rem 3rem;display:flex;align-items:flex-start;justify-content:flex-end;">
-            <div style="text-align:right;">
-              <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;margin-bottom:0.4rem;">desde</p>
-              <p style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#C4956A;white-space:nowrap;">{s.precio}</p>
-            </div>
+          <!-- CTA -->
+          <div style="padding:2.5rem 0 2.5rem 3rem;display:flex;align-items:center;justify-content:flex-end;">
+            <a
+              href="#contacto"
+              style="display:inline-flex;align-items:center;gap:0.5rem;color:#C4956A;text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:500;border:1px solid rgba(196,149,106,0.3);padding:0.6rem 1.2rem;border-radius:9999px;transition:all 0.3s;white-space:nowrap;"
+              onmouseover="this.style.borderColor='rgba(196,149,106,0.7)';this.style.background='rgba(196,149,106,0.07)'"
+              onmouseout="this.style.borderColor='rgba(196,149,106,0.3)';this.style.background='transparent'"
+            >
+              Consultar <span style="font-size:0.7rem;">→</span>
+            </a>
           </div>
         </div>
       ))}

@@ -9,17 +9,18 @@
     <!-- Logo -->
     <a
       href="/"
+      class="nav-logo"
       style="font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#F2EDE6;text-decoration:none;transition:color 0.2s;flex-shrink:0;"
       onmouseover="this.style.color='#C4956A'"
-      onmouseout="this.style.color='#F2EDE6'"
+      onmouseout="this.style.color=document.documentElement.dataset.theme==='light'?'#1A1412':'#F2EDE6'"
     >
       Benincasa
     </a>
 
     <!-- Desktop nav -->
     <nav class="nav-desktop" style="display:flex;align-items:center;gap:2rem;">
-      <a href="#servicios" class="nav-link" style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C8C0B5;text-decoration:none;transition:color 0.25s;" onmouseover="this.style.color='#F2EDE6'" onmouseout="this.style.color='#C8C0B5'">Servicios</a>
-      <a href="#proceso" class="nav-link" style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C8C0B5;text-decoration:none;transition:color 0.25s;" onmouseover="this.style.color='#F2EDE6'" onmouseout="this.style.color='#C8C0B5'">Proceso</a>
+      <a href="#servicios" class="nav-link" style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C8C0B5;text-decoration:none;transition:color 0.25s;" onmouseover="this.style.color=document.documentElement.dataset.theme==='light'?'#1A1412':'#F2EDE6'" onmouseout="this.style.color=document.documentElement.dataset.theme==='light'?'#5A4F45':'#C8C0B5'">Servicios</a>
+      <a href="#proceso" class="nav-link" style="font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:#C8C0B5;text-decoration:none;transition:color 0.25s;" onmouseover="this.style.color=document.documentElement.dataset.theme==='light'?'#1A1412':'#F2EDE6'" onmouseout="this.style.color=document.documentElement.dataset.theme==='light'?'#5A4F45':'#C8C0B5'">Proceso</a>
 
       <!-- Theme toggle -->
       <button
@@ -28,7 +29,7 @@
         aria-label="Cambiar tema claro/oscuro"
         style="background:none;border:1px solid rgba(125,29,63,0.3);color:#C8C0B5;width:2.2rem;height:2.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease;flex-shrink:0;"
         onmouseover="this.style.borderColor='rgba(196,149,106,0.5)';this.style.color='#C4956A'"
-        onmouseout="this.style.borderColor='rgba(125,29,63,0.3)';this.style.color='#C8C0B5'"
+        onmouseout="this.style.borderColor='rgba(125,29,63,0.35)';this.style.color=document.documentElement.dataset.theme==='light'?'#5A4F45':'#C8C0B5'"
       >
         <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"></circle>
@@ -224,9 +225,10 @@
 </style>
 
 <script>
-  // Theme toggle icons
+  // Theme toggle icons + nav color sync
   function updateToggleIcons() {
     const theme = document.documentElement.getAttribute('data-theme');
+    const isLight = theme === 'light';
     const icons = [
       { sun: '.icon-sun', moon: '.icon-moon' },
       { sun: '.icon-sun-m', moon: '.icon-moon-m' },
@@ -236,6 +238,22 @@
       const moonEl = document.querySelector(moon) as HTMLElement;
       if (sunEl) sunEl.style.display = theme === 'dark' ? 'block' : 'none';
       if (moonEl) moonEl.style.display = theme === 'light' ? 'block' : 'none';
+    });
+
+    // Sync nav element colors to current theme
+    const logo = document.querySelector('.nav-logo') as HTMLElement;
+    if (logo) logo.style.color = isLight ? '#1A1412' : '#F2EDE6';
+
+    document.querySelectorAll<HTMLElement>('.nav-link').forEach(el => {
+      el.style.color = isLight ? '#5A4F45' : '#C8C0B5';
+    });
+
+    const toggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+    toggles.forEach(btn => {
+      if (btn) {
+        btn.style.color = isLight ? '#5A4F45' : '#C8C0B5';
+        btn.style.borderColor = 'rgba(125,29,63,0.35)';
+      }
     });
   }
 

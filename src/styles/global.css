@@ -362,17 +362,41 @@ html {
   color: #F2EDE6;
 }
 
-/* Nav links in light */
+/* Nav links in light — structural selectors to survive JS hover handlers */
+[data-theme="light"] .nav-desktop > a.nav-link {
+  color: #5A4F45 !important;
+}
+
 [data-theme="light"] nav a[style*="color:#C8C0B5"] {
   color: #5A4F45 !important;
 }
 
 /* Logo */
+[data-theme="light"] #nav a[href="/"] {
+  color: #1A1412 !important;
+}
+
 [data-theme="light"] a[style*="Playfair Display"] {
   color: #1A1412 !important;
 }
 
+/* Theme toggle buttons in light mode */
+[data-theme="light"] #theme-toggle,
+[data-theme="light"] #theme-toggle-mobile {
+  color: #5A4F45 !important;
+  border-color: rgba(125,29,63,0.35) !important;
+}
+
+/* Hamburger lines — must be in global CSS to avoid Astro scoping issues */
+[data-theme="light"] .hamburger-line {
+  background: #1A1412 !important;
+}
+
 /* Nav CTA button text stays white */
+[data-theme="light"] .nav-desktop > a[href="#contacto"] {
+  color: #F2EDE6 !important;
+}
+
 [data-theme="light"] nav a[style*="background:#7D1D3F"] {
   color: #F2EDE6 !important;
 }
@@ -394,6 +418,24 @@ html {
 /* FAQ items */
 [data-theme="light"] .faq-item summary span:first-child {
   color: #1A1412 !important;
+}
+
+/* Hero secondary CTA — "Cómo trabajo" link */
+[data-theme="light"] a[href="#proceso"][style*="text-transform:uppercase"] {
+  color: #5A4F45 !important;
+}
+
+/* CTA contact buttons — dark bg needs override */
+[data-theme="light"] #contacto a[href*="wa.me"],
+[data-theme="light"] #contacto a[href*="mailto:"] {
+  background: #FFFFFF !important;
+  color: #1A1412 !important;
+  border-color: rgba(125,29,63,0.3) !important;
+}
+
+/* Footer links — survive JS hover handlers */
+[data-theme="light"] footer a {
+  color: #5A4F45 !important;
 }
 
 /* MVP tooltip */
