@@ -38,7 +38,7 @@
   <!-- Eyebrow pill -->
   <rect x="100" y="120" width="220" height="32" rx="16" fill="none" stroke="#C4956A" stroke-opacity="0.4" stroke-width="1"/>
   <circle cx="122" cy="136" r="4" fill="#C4956A"/>
-  <text x="136" y="141" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#C4956A" letter-spacing="2.5" text-transform="uppercase">DESARROLLO WEB · AI-FIRST</text>
+  <text x="136" y="141" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#C4956A" letter-spacing="2.5" text-transform="uppercase">DISEÑO &amp; DESARROLLO WEB</text>
 
   <!-- Main headline line 1 -->
   <text x="100" y="240" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#F2EDE6" letter-spacing="-2">Tu negocio merece</text>
@@ -47,14 +47,14 @@
   <text x="100" y="326" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="400" fill="#7D1D3F" font-style="italic" letter-spacing="-2">una buena casa en internet.</text>
 
   <!-- Subline -->
-  <text x="100" y="414" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="300" fill="#C8C0B5" letter-spacing="0">Sitios que convierten. MVP en 48hs. Diseño con carácter.</text>
+  <text x="100" y="414" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="300" fill="#C8C0B5" letter-spacing="0">Sitios que convierten. Primera versión en 48hs. Diseño con carácter.</text>
 
   <!-- Divider line -->
   <rect x="100" y="454" width="560" height="1" fill="#7D1D3F" fill-opacity="0.3"/>
 
   <!-- Stats row -->
   <text x="100" y="498" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="400" fill="#F2EDE6">48hs</text>
-  <text x="100" y="522" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#7A7068" letter-spacing="2">MVP ENTREGADO</text>
+  <text x="100" y="522" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#7A7068" letter-spacing="2">PRIMERA VERSIÓN</text>
 
   <rect x="222" y="480" width="1" height="50" fill="#7D1D3F" fill-opacity="0.4"/>
 

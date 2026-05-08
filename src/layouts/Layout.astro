@@ -6,13 +6,15 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonical?: string;
+  noIndex?: boolean;
 }
 
 const {
   title = "Benincasa — Tu negocio merece una buena casa en internet",
   description = "Diseño y desarrollo de sitios web que convierten visitas en clientes. Rápido, con criterio, sin aspecto genérico. Primera versión en 48 horas.",
-  ogImage = "/og-image.svg",
+  ogImage = "/og-image.png",
   canonical = "https://benincasadev.vercel.app",
+  noIndex = false,
 } = Astro.props;
 
 const jsonLd = {
@@ -63,7 +65,7 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Nery Benincasa" />
-    <meta name="robots" content="index, follow" />
+    {noIndex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow" />}
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
@@ -74,7 +76,7 @@ const jsonLd = {
     <meta property="og:image" content={`${canonical}${ogImage}`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Benincasa — Desarrollo web AI-First" />
+    <meta property="og:image:alt" content="Benincasa — Tu negocio merece una buena casa en internet" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:site_name" content="Benincasa" />
 
@@ -131,6 +133,10 @@ const jsonLd = {
     <slot />
 
     <script>
+      // Vercel Analytics
+      import { inject } from '@vercel/analytics';
+      inject();
+
       // Intersection Observer para reveal animations (con variantes)
       const observer = new IntersectionObserver(
         (entries) => {
