@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /gracias
 
-Sitemap: https://benincasadev.vercel.app/sitemap-index.xml
+Sitemap: https://benincasa.dev/sitemap-index.xml

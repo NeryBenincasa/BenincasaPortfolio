@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://benincasadev.vercel.app',
+  site: 'https://benincasa.dev',
   integrations: [sitemap({ filter: (page) => !page.includes('/gracias') })],
   vite: {
     plugins: [tailwindcss()]
