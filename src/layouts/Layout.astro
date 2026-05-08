@@ -126,8 +126,6 @@ const jsonLd = {
           document.documentElement.setAttribute('data-theme', 'light');
           const meta = document.getElementById('meta-theme');
           if (meta) meta.setAttribute('content', '#F5F0E8');
-          const cs = document.getElementById('meta-color-scheme');
-          if (cs) cs.setAttribute('content', 'light');
         }
       })();
     </script>
@@ -164,8 +162,6 @@ const jsonLd = {
 
         const meta = document.getElementById('meta-theme');
         if (meta) meta.setAttribute('content', next === 'dark' ? '#7D1D3F' : '#F5F0E8');
-        const cs = document.getElementById('meta-color-scheme');
-        if (cs) cs.setAttribute('content', next);
       };
     </script>
   </body>
