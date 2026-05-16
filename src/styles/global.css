@@ -28,6 +28,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -72,7 +73,7 @@
 /* Reveal variant: slide from left */
 .reveal-left {
   opacity: 0;
-  transform: translateX(-80px);
+  transform: translateX(-40px);
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
@@ -86,7 +87,7 @@
 /* Reveal variant: slide from right */
 .reveal-right {
   opacity: 0;
-  transform: translateX(80px);
+  transform: translateX(40px);
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
