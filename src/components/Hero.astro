@@ -2,14 +2,28 @@
 ---
 <section style="min-height:100dvh;display:flex;flex-direction:column;position:relative;overflow:hidden;padding-top:4rem;">
 
+  <!-- Background video -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.38;pointer-events:none;"
+  >
+    <source src="/video/hero-bg.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Video overlay gradient -->
+  <div style="position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at 50% 50%, rgba(10,8,8,0.4) 0%, var(--color-base, #0A0808) 70%), linear-gradient(to bottom, rgba(10,8,8,0.5) 0%, rgba(10,8,8,0.8) 100%);pointer-events:none;"></div>
+
   <!-- Background radial -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 65% 35%, rgba(125,29,63,0.2) 0%, transparent 65%);pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;z-index:2;background:radial-gradient(ellipse 70% 55% at 65% 35%, rgba(125,29,63,0.2) 0%, transparent 65%);pointer-events:none;"></div>
 
   <!-- Vertical accent line -->
-  <div style="position:absolute;left:2rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom, transparent 0%, rgba(125,29,63,0.4) 35%, rgba(196,149,106,0.2) 65%, transparent 100%);pointer-events:none;"></div>
+  <div style="position:absolute;left:2rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom, transparent 0%, rgba(125,29,63,0.4) 35%, rgba(196,149,106,0.2) 65%, transparent 100%);pointer-events:none;z-index:3;"></div>
 
   <!-- Main content — margin-top:auto lo empuja al fondo del flex container -->
-  <div style="margin-top:auto;padding:0 2rem 3rem;max-width:72rem;width:100%;position:relative;">
+  <div style="margin-top:auto;padding:0 2rem 3rem;max-width:72rem;width:100%;position:relative;z-index:3;">
 
     <!-- Eyebrow pill badge -->
     <div class="hero-reveal" style="display:inline-flex;align-items:center;gap:0.5rem;border-radius:9999px;border:1px solid rgba(196,149,106,0.3);background:rgba(196,149,106,0.07);padding:0.35rem 0.9rem;margin-bottom:2rem;width:fit-content;">
@@ -53,12 +67,14 @@
     <!-- Stats -->
     <div class="hero-reveal hero-delay-4" style="display:flex;gap:0;border-top:1px solid rgba(125,29,63,0.2);flex-wrap:wrap;">
       {[
-        { valor: "48hs", label: "Primera versión lista" },
-        { valor: "95+", label: "PageSpeed score" },
-        { valor: "100%", label: "Diseño a medida" },
+        { valor: 48, sufijo: "hs", label: "Primera versión lista" },
+        { valor: 95, sufijo: "+", label: "PageSpeed score" },
+        { valor: 100, sufijo: "%", label: "Diseño a medida" },
       ].map((stat, i) => (
         <div style={`padding:1.5rem 2.5rem;${i > 0 ? 'border-left:1px solid rgba(125,29,63,0.2);' : ''}`}>
-          <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;color:#F2EDE6;line-height:1;">{stat.valor}</p>
+          <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:500;color:#F2EDE6;line-height:1;">
+            <span class="stat-counter" data-target={stat.valor} data-suffix={stat.sufijo}>0{stat.sufijo}</span>
+          </p>
           <p style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:#7A7068;margin-top:0.4rem;font-family:'Outfit',sans-serif;">
             {stat.label}
           </p>
@@ -69,7 +85,7 @@
   </div>
 
   <!-- Marquee strip — siempre al pie de la sección -->
-  <div style="width:100%;border-top:1px solid rgba(125,29,63,0.2);border-bottom:1px solid rgba(125,29,63,0.2);padding:0.85rem 0;overflow:hidden;background:rgba(125,29,63,0.04);flex-shrink:0;">
+  <div style="width:100%;border-top:1px solid rgba(125,29,63,0.2);border-bottom:1px solid rgba(125,29,63,0.2);padding:0.85rem 0;overflow:hidden;background:rgba(125,29,63,0.04);flex-shrink:0;position:relative;z-index:3;">
     <div class="marquee-track" style="display:flex;gap:0;white-space:nowrap;width:max-content;animation:marquee 22s linear infinite;">
       {Array(3).fill(null).map(() => (
         <span style="display:inline-flex;align-items:center;gap:2.5rem;padding:0 2.5rem;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:#7A7068;font-family:'Outfit',sans-serif;">
@@ -114,3 +130,40 @@
     }
   }
 </style>
+
+<script is:inline>
+  (function() {
+    var counters = document.querySelectorAll('.stat-counter');
+    var animated = false;
+
+    function animateCounters() {
+      if (animated) return;
+      animated = true;
+
+      counters.forEach(function(el) {
+        var target = parseInt(el.getAttribute('data-target'));
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 1800;
+        var start = performance.now();
+
+        function easeOutExpo(t) {
+          return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+        }
+
+        function update(now) {
+          var elapsed = now - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = easeOutExpo(progress);
+          var current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    // Start counters after hero animation finishes (~0.52s delay + 0.85s animation)
+    setTimeout(animateCounters, 1400);
+  })();
+</script>

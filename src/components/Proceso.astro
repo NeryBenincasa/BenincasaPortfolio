@@ -47,14 +47,16 @@ const pasos = [
       <div>
         {pasos.map((paso, i) => (
           <div
-            class={`reveal reveal-delay-${i + 1}`}
+            class={`reveal-right reveal-delay-${i + 1}`}
             style={`display:grid;grid-template-columns:2.5rem 1fr;gap:1.5rem;padding:2rem 0;${i < pasos.length - 1 ? 'border-bottom:1px solid rgba(125,29,63,0.15);' : ''}`}
           >
             <!-- Número col -->
             <div style="display:flex;flex-direction:column;align-items:center;padding-top:0.2rem;">
-              <span style="font-family:'Playfair Display',serif;font-size:0.95rem;color:rgba(196,149,106,0.5);line-height:1;">{paso.numero}</span>
+              <span class="proceso-dot" style="width:2.2rem;height:2.2rem;border-radius:50%;border:1.5px solid rgba(196,149,106,0.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:0.85rem;color:rgba(196,149,106,0.5);line-height:1;transition:all 0.5s cubic-bezier(0.16,1,0.3,1);flex-shrink:0;">{paso.numero}</span>
               {i < pasos.length - 1 && (
-                <div style="width:1px;flex:1;background:linear-gradient(to bottom, rgba(125,29,63,0.25), transparent);margin-top:0.75rem;min-height:1.5rem;"></div>
+                <div class="proceso-line" style="width:1.5px;flex:1;margin-top:0.5rem;min-height:1.5rem;position:relative;overflow:hidden;background:rgba(125,29,63,0.1);">
+                  <div class="proceso-line-fill" style="position:absolute;inset:0;background:linear-gradient(to bottom, #7D1D3F, #C4956A);transform:scaleY(0);transform-origin:top;transition:transform 0.8s cubic-bezier(0.16,1,0.3,1);"></div>
+                </div>
               )}
             </div>
 
@@ -72,6 +74,19 @@ const pasos = [
 </section>
 
 <style>
+  /* Dot active state */
+  .reveal-right.visible .proceso-dot {
+    border-color: #C4956A;
+    color: #C4956A;
+    background: rgba(196,149,106,0.08);
+    box-shadow: 0 0 12px rgba(196,149,106,0.15);
+  }
+
+  /* Line fills when step is visible */
+  .reveal-right.visible .proceso-line-fill {
+    transform: scaleY(1);
+  }
+
   @media (max-width: 768px) {
     .proceso-layout {
       grid-template-columns: 1fr !important;

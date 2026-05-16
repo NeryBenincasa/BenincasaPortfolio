@@ -64,7 +64,7 @@ const trabajos = [
           href={t.url}
           target="_blank"
           rel="noopener"
-          class={`reveal reveal-delay-${i + 1} trabajo-card`}
+          class={`reveal-scale reveal-delay-${i + 1} trabajo-card`}
           style={`display:flex;flex-direction:column;background:#0D0A0A;text-decoration:none;position:relative;overflow:hidden;transition:background 0.3s;`}
         >
           <!-- Accent top line -->
@@ -123,9 +123,9 @@ const trabajos = [
   .trabajos-grid a:hover .arrow {
     transform: translate(3px, -3px);
   }
-  /* Zoom image on hover */
-  .trabajo-card:hover .trabajo-preview img {
-    transform: scale(1.05);
+  /* Parallax zoom on hover — JS handles transform via mousemove */
+  .trabajo-card .trabajo-preview img {
+    will-change: transform;
   }
   @media (max-width: 900px) {
     .trabajos-grid {
@@ -148,3 +148,25 @@ const trabajos = [
     color: #5A4F45 !important;
   }
 </style>
+
+<script is:inline>
+  (function() {
+    var cards = document.querySelectorAll('.trabajo-card');
+    cards.forEach(function(card) {
+      var preview = card.querySelector('.trabajo-preview');
+      var img = preview ? preview.querySelector('img') : null;
+      if (!img) return;
+
+      card.addEventListener('mousemove', function(e) {
+        var rect = preview.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width - 0.5;
+        var y = (e.clientY - rect.top) / rect.height - 0.5;
+        img.style.transform = 'scale(1.08) translate(' + (x * -15) + 'px, ' + (y * -15) + 'px)';
+      });
+
+      card.addEventListener('mouseleave', function() {
+        img.style.transform = 'scale(1) translate(0, 0)';
+      });
+    });
+  })();
+</script>

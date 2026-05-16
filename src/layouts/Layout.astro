@@ -131,38 +131,103 @@ const jsonLd = {
     </script>
   </head>
   <body class="noise">
+    <!-- Page transition overlay -->
+    <div id="page-transition" style="position:fixed;inset:0;z-index:9999;background:#0A0808;pointer-events:none;opacity:1;transition:opacity 0.6s cubic-bezier(0.16,1,0.3,1);"></div>
+
     <slot />
 
     <script>
       // Vercel Analytics
       import { inject } from '@vercel/analytics';
       inject();
+    </script>
 
-      // Intersection Observer para reveal animations (con variantes)
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
+    <script is:inline>
+      // Reveal animations — init after DOM is ready
+      function initReveals() {
+        var sel = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate';
+        var els = document.querySelectorAll(sel);
+        if (!els.length) return;
+
+        var observer = new IntersectionObserver(
+          function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.05, rootMargin: '50px 0px -40px 0px' }
+        );
+
+        els.forEach(function(el) { observer.observe(el); });
+
+        // Fallback for fast scroll / anchor jumps
+        function revealPassed() {
+          document.querySelectorAll(sel).forEach(function(el) {
+            if (!el.classList.contains('visible')) {
+              var rect = el.getBoundingClientRect();
+              if (rect.bottom < window.innerHeight + 150) {
+                el.classList.add('visible');
+              }
             }
           });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
-      );
+        }
+        window.addEventListener('scroll', revealPassed, { passive: true });
+      }
 
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el) => observer.observe(el));
+      // Run on multiple events to ensure it catches
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initReveals);
+      } else {
+        initReveals();
+      }
+      window.addEventListener('load', initReveals);
 
       // Theme toggle
       window.toggleTheme = function() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
+        var html = document.documentElement;
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-
-        const meta = document.getElementById('meta-theme');
+        var meta = document.getElementById('meta-theme');
         if (meta) meta.setAttribute('content', next === 'dark' ? '#7D1D3F' : '#F5F0E8');
       };
+
+      // Page transition — fade in on load
+      var overlay = document.getElementById('page-transition');
+      if (overlay) {
+        window.addEventListener('load', function() {
+          overlay.style.opacity = '0';
+          setTimeout(function() { overlay.style.display = 'none'; }, 600);
+        });
+        // Also fade in quickly if load already fired
+        if (document.readyState === 'complete') {
+          overlay.style.opacity = '0';
+          setTimeout(function() { overlay.style.display = 'none'; }, 600);
+        }
+      }
+
+      // Fade out on external navigation (non-anchor links)
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href]');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        // Skip anchors, external links, and special links
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+
+        e.preventDefault();
+        var ov = document.getElementById('page-transition');
+        if (ov) {
+          ov.style.display = 'block';
+          ov.style.opacity = '1';
+          setTimeout(function() { window.location.href = href; }, 400);
+        } else {
+          window.location.href = href;
+        }
+      });
     </script>
   </body>
 </html>

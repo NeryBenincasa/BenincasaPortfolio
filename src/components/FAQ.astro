@@ -60,7 +60,7 @@ const faqs = [
       <div class="faq-list">
         {faqs.map((faq, i) => (
           <details
-            class={`reveal reveal-delay-${Math.min(i + 1, 4)} faq-item`}
+            class={`reveal-left reveal-delay-${Math.min(i + 1, 4)} faq-item`}
             style={`border-top:1px solid rgba(125,29,63,0.18);`}
           >
             <summary style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.75rem 0;cursor:pointer;list-style:none;user-select:none;">
